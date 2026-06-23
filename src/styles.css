@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'Norse-Bold';
+    src: url(./fonts/Norse-Bold.otf) format('opentype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Sixty-Four';
+    src: url(./fonts/Sixtyfour/Sixtyfour-Regular-VariableFont_BLED\,SCAN.ttf) format('truetype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+:root {
+    --primary-clr: rgb(87, 197, 146);
+    --text-color: rgb(70, 68, 68);
+    --secondary-clr: rgb(255, 255, 255);
+    --btn-clr: rgb(243, 59, 90);
+    --sidebar-clr: rgba(90, 34, 179, 1);
+    --form-gap: 10px;
+}
+
+body {
+    font-family: 'Norse-Bold';
+    margin: 0;
+    padding: 0;
+    font-size: 21px;
+    color: var(--text-color);
+    background-color: var(--primary-clr);
+}
+
+#app-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+
+#new-todo {
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4.5px;
+    color: var(--secondary-clr);
+    background-color: var(--btn-clr);
+    font-family: 'Sixty-Four';
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sidebar {
+    padding: 1rem;
+    min-height: 100dvh;
+    background-color: var(--sidebar-clr);
+    color: var(--secondary-clr);
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    display: flex;
+    justify-content: center;
+}
+
+#new-todo-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 12px;
+}
+
+#new-todo-btn {
+    border: none;
+    font-family: 'Norse-Bold';
+    background-color: var(--sidebar-clr);
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--secondary-clr);
+    border-radius: var(--form-gap);
+}
+
+#add-todo-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--form-gap);
+}
+
+input {
+    padding: 6px;
+    align-self: center;
+}
+
+#add-todo-btn {
+    background-color: var(--sidebar-clr);
+    cursor: pointer;
+    border: none;
+    padding: 6.5px;
+    font-family: 'Norse-Bold';
+    border-radius: 8px;
+    color: var(--secondary-clr);
+}
+
+#add-project-btn {
+    cursor: pointer;
+    font-family: 'Sixty-Four';
+    border: none;
+    border-radius: 8px;
+    padding: 6.5px;
+}
+
+#add-project-form {
+    padding-top: 24rem;
+}
