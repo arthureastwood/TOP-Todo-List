@@ -5,19 +5,14 @@
     font-weight: 400;
 }
 
-@font-face {
-    font-family: 'Sixty-Four';
-    src: url(./fonts/Sixtyfour/Sixtyfour-Regular-VariableFont_BLED\,SCAN.ttf) format('truetype');
-    font-style: normal;
-    font-weight: 400;
-}
-
 :root {
-    --primary-clr: rgb(87, 197, 146);
-    --text-color: rgb(70, 68, 68);
-    --secondary-clr: rgb(255, 255, 255);
-    --btn-clr: rgb(243, 59, 90);
-    --sidebar-clr: rgba(90, 34, 179, 1);
+    --primary-clr: #f7f7fb;
+    --text-color: #243447;
+    --secondary-clr: #ffffff;
+    --accent-clr: #4f46e5;
+    --accent-soft: #e0e7ff;
+    --danger-clr: #ef4444;
+    --sidebar-clr: #1f2937;
     --form-gap: 10px;
 }
 
@@ -25,87 +20,175 @@ body {
     font-family: 'Norse-Bold';
     margin: 0;
     padding: 0;
-    font-size: 21px;
+    font-size: 18px;
     color: var(--text-color);
-    background-color: var(--primary-clr);
+    background: linear-gradient(135deg, #eef2ff 0%, #f7f7fb 100%);
 }
 
 #app-container {
     display: grid;
-    grid-template-columns: 300px 1fr;
-}
-
-#new-todo {
-    border: none;
-    padding: 4px 8px;
-    border-radius: 4.5px;
-    color: var(--secondary-clr);
-    background-color: var(--btn-clr);
-    font-family: 'Sixty-Four';
-    font-size: 16px;
-    cursor: pointer;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
 }
 
 .sidebar {
-    padding: 1rem;
-    min-height: 100dvh;
+    padding: 1.25rem;
     background-color: var(--sidebar-clr);
     color: var(--secondary-clr);
     display: flex;
     flex-direction: column;
+    gap: 1rem;
+}
+
+#project-list, #todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.project-item, .todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.7rem 0.8rem;
+    border-radius: 0.6rem;
+    margin-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.project-item.active {
+    background: var(--accent-clr);
+}
+
+.project-item span {
+    cursor: pointer;
+    flex: 1;
+}
+
+.delete-project-btn, .delete-todo-btn {
+    border: none;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.main-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .main-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#new-todo-container {
-    display: flex;
-    justify-content: center;
-    padding-top: 12px;
-}
-
-#new-todo-btn {
+#new-todo-btn, #add-project-btn, #cancel-project-btn, #add-todo-btn, #edit-todo-btn, #delete-todo-btn, #close-dialog, #close-details-btn {
     border: none;
-    font-family: 'Norse-Bold';
-    background-color: var(--sidebar-clr);
+    border-radius: 0.6rem;
+    padding: 0.65rem 0.9rem;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-family: inherit;
+}
+
+#new-project-text {
     color: var(--secondary-clr);
-    border-radius: var(--form-gap);
+    background-color: var(--sidebar-clr);
+}
+
+#new-todo-btn, #add-project-btn, #add-todo-btn, #edit-todo-btn {
+    background: var(--accent-clr);
+    color: white;
+}
+
+#new-project-btn, #cancel-project-btn, #close-dialog, #close-details-btn {
+    background: var(--accent-soft);
+    color: var(--text-color);
+}
+
+#delete-todo-btn {
+    background: var(--danger-clr);
+    color: white;
+}
+
+#add-project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+input, select, textarea {
+    padding: 0.6rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.todo-item {
+    background: var(--secondary-clr);
+    color: var(--text-color);
+    cursor: pointer;
+    justify-content: flex-start;
+}
+
+.todo-item.completed {
+    opacity: 0.7;
+    text-decoration: line-through;
+}
+
+.todo-item.priority-low {
+    border-left: 6px solid #22c55e;
+}
+
+.todo-item.priority-medium {
+    border-left: 6px solid #f59e0b;
+}
+
+.todo-item.priority-high {
+    border-left: 6px solid #ef4444;
+}
+
+.todo-info {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    gap: 1rem;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    display: grid;
+    place-items: center;
+}
+
+.modal-content, dialog {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    width: min(90vw, 420px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+dialog {
+    border: none;
 }
 
 #add-todo-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: var(--form-gap);
 }
 
-input {
-    padding: 6px;
-    align-self: center;
-}
-
-#add-todo-btn {
-    background-color: var(--sidebar-clr);
-    cursor: pointer;
-    border: none;
-    padding: 6.5px;
-    font-family: 'Norse-Bold';
-    border-radius: 8px;
-    color: var(--secondary-clr);
-}
-
-#add-project-btn {
-    cursor: pointer;
-    font-family: 'Sixty-Four';
-    border: none;
-    border-radius: 8px;
-    padding: 6.5px;
-}
-
-#add-project-form {
-    padding-top: 24rem;
+.hidden {
+    display: none;
 }

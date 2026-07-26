@@ -1,7 +1,7 @@
-import { DisplayController } from "./displayController.js";
-import { Todo } from "./todo.js";
+import './styles.css';
+import { DisplayController } from './displayController.js';
+import { TodoApp } from './appLogic.js';
 
-const initialDisplay = new DisplayController();
-initialDisplay.initDisplay();
-const todo = new Todo();
-todo.renderTodos();
+const appLogic = new TodoApp();
+const displayController = new DisplayController(appLogic);
+displayController.init();

@@ -7,7 +7,53 @@
 </head>
 <body>
     <div id="app-container">
-        
+        <aside class="sidebar">
+            <h2>Projects</h2>
+            <ul id="project-list"></ul>
+            <span id="new-project-text">New Project Name</span>
+            <div id="add-project-form" class="hidden">
+                <input type="text" id="new-project-title" placeholder="New Project Name" required>
+                <button id="add-project-btn" type="button">Add</button>
+                <button id="cancel-project-btn" type="button">Cancel</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="main-header">
+                <h2 id="current-project-title">Default</h2>
+            </div>
+            <button id="new-todo-btn">New Todo</button>
+            <ul id="todo-list"></ul>
+        </main>
+    </div>
+
+    <dialog id="todo-modal">
+        <form id="add-todo-form">
+            <input type="text" name="todo-title" id="todo-title" placeholder="Task Title" required>
+            <input type="text" name="todo-description" id="todo-desc" placeholder="Description">
+            <input type="date" name="todo-date" id="todo-date" required>
+            <select name="todo-priority" id="todo-priority">
+                <option value="Low">Low</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="High">High</option>
+            </select>
+            <textarea name="todo-notes" id="todo-notes" placeholder="Notes"></textarea>
+            <button id="add-todo-btn" type="submit">Save Task</button>
+        </form>
+        <button id="close-dialog" type="button">Close</button>
+    </dialog>
+
+    <div id="todo-details-modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="close-details-btn">&times;</span>
+            <h2 id="details-title"></h2>
+            <p><strong>Description:</strong> <span id="details-description"></span></p>
+            <p><strong>Due Date:</strong> <span id="details-dueDate"></span></p>
+            <p><strong>Priority:</strong> <span id="details-priority"></span></p>
+            <p><strong>Notes:</strong> <span id="details-notes"></span></p>
+            <button id="edit-todo-btn" type="button">Edit</button>
+            <button id="delete-todo-btn" type="button">Delete</button>
+        </div>
     </div>
 </body>
 </html>
