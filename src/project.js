@@ -2,14 +2,14 @@ export class Project{
     constructor(name){
         this.name = name;
         this.todos = [];
-        this.id = Date.now().toString() + Math.random().toString(36).substring(2,9);
+        this.id = crypto.randomUUID();
     }
     
     addTodo(todo){
         this.todos.push(todo);
     }
     
-    removeTodo(todoId){
+    deleteTodo(todoId){
         this.todos = this.todos.filter(todo => todo.id !== todoId);
     }
 

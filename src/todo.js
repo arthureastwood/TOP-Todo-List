@@ -6,19 +6,31 @@ export class Todo{
         this.priority = priority;
         this.notes = notes;
         this.checklist = checklist;
-        this.id = Date.now().toString() + Math.random().toString(36).substring(2,9);
+        this.id = crypto.randomUUID();
+    }
+
+    addTodo(todo){
+        this.todos.push(todo);
     }
 
     toggleComplete(){
         this.checklist = !this.checklist;
     }
+
+    deleteTodo(todos, id){
+        return todos.filter(todo => todo.id !== id);
+    }
     
-    update(title, description, dueDate, priority, notes, checklist=false){
+    updateTodo(title, description, dueDate, priority, notes, checklist){
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
         this.notes = notes;
-        this.checklist = checklist;
+        this.checklist = checklist ?? this.checklist;
+    }
+
+    openTodo(todos, id){
+        return todos.find(todo => todo.id === id);
     }
 }

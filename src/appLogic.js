@@ -93,8 +93,10 @@ export class TodoApp {
 
   deleteTodo(todoId) {
     const project = this.getCurrentProject();
-    project.removeTodo(todoId);
-    this.save();
+    if(project){
+      project.todos = project.todos.filter((todo) => todo.id !== todoId);
+      this.save();
+    }
   }
 
   updateTodo(todoId, todoData) {
@@ -103,13 +105,13 @@ export class TodoApp {
       return null;
     }
 
-    todo.update(
+    todo.updateTodo(
       todoData.title,
       todoData.description,
       todoData.dueDate,
       todoData.priority,
       todoData.notes,
-      todoData.completed,
+      todoData.checklist,
     );
     this.save();
     return todo;
